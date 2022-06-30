@@ -1,5 +1,10 @@
 //variables
 let producto;
+const notebooks [
+    {id: 1, nombre:"msiKatana", precio: 235000}
+    {id: 2, nombre:"asusTuf", precio: 195000}
+    {id: 3, nombre:"hpOmen", precio: 205000}
+]
 let msiKatana = 235000;
 let asusTuf = 195000;
 let hpOmen = 205000;
