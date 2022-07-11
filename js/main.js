@@ -1,44 +1,84 @@
-//variables
-let producto;
-const notebooks [
-    {id: 1, nombre:"msiKatana", precio: 235000}
-    {id: 2, nombre:"asusTuf", precio: 195000}
-    {id: 3, nombre:"hpOmen", precio: 205000}
-]
-let msiKatana = 235000;
-let asusTuf = 195000;
-let hpOmen = 205000;
-let nombre = prompt ("Bienvenido a GamerSolutions! Como es tu nombre?");
-saludar ();
-comprarProducto ();
+const tarjetas = document.getElementById("tarjetaProducto");
+productosDisponibles.forEach((productosDisponibles,indice)=>{
+    let card = document.createElement("div");
+    card.classList.add("card", "col-sm-12", "col-lg-4")
+    card.innerHTML=`<img src="${productosDisponibles.imagen}" class="card-img-top" alt="imagenproducto">
+        <div class="card-body">
+        <h5 class="card-title">${productosDisponibles.nombre}</h5>
+        <p class="card-text">${productosDisponibles.descripcion}</p>
+        <p class="card-text">$ ${productosDisponibles.precio}</p>
+        <a href="#" class="btn btn-primary" onClick="agregarCarrito(${indice})">COMPRAR</a>
+        </div>`;
+    tarjetas.appendChild(card);
+});
 
+const agregarCarrito=(indice)=>{
+    const indiceEncontradoCarrito = carrito.findIndex((elemento)=>{
+        return elemento.id === productosDisponibles[indice].id
+    })
+    if(indiceEncontradoCarrito === -1){
+        const agregarproducto= productosDisponibles[indice];
+        agregarproducto.cantidad = 1
+        carrito.push(agregarproducto);
+        actualizarlocalstorage(carrito);
+        crearcarrito()
+    }
+    else {
+        carrito[indiceEncontradoCarrito].cantidad += 1
+        actualizarlocalstorage(carrito);
+        crearcarrito();
+    }
+};
 
-//funciones
-function saludar() {
-    alert("Hola " + nombre + "! Te invito a elegir tu proxima Notebook.")
+const modalCarrito = document.getElementById("cajacarrito");
+let total = 0;
+const crearcarrito = ()=>{
+    modalCarrito.className = "cajacarrito";
+    modalCarrito.innerHTML = "";
+    if(carrito.length > 0){
+        carrito.forEach((productosDisponibles, indice)=> {
+            total = total + productosDisponibles.precio * productosDisponibles.cantidad;
+            const carritoConteiner = document.createElement("div");
+            carritoConteiner.className = "cajacarrito";
+            carritoConteiner.innerHTML = `
+            <img class="car-img" scr="${productosDisponibles.imagen}"/>
+            <div class="product-details"> Cantidad: ${productosDisponibles.cantidad}</div>
+            <div class="product-details"> Precio: $ ${productosDisponibles.precio}</div>
+            <div class="product-details">Total: $ ${productosDisponibles.cantidad * productosDisponibles.precio}</div>
+            <button class="btn btn-info" id="remove-product" onClick="removeProduct(${indice})">Eliminar</button>
+            `;
+            modalCarrito.appendChild(carritoConteiner);
+        });
+        const totalfinal = document.createElement("div");
+            totalfinal.className = "total-carrito";
+            totalfinal.innerHTML = `
+            <div class="totaltotal"> TOTAL: $ ${total}</div>
+            <button class="btn btn-info" id="finalizarcompra" onClick="finalizarcompra()">FINALIZAR COMPRA</button>
+            `;
+        modalCarrito.appendChild(carritoConteiner)
+        }
+        else{
+            modalCarrito.classList.remove("carrito");
+        }
+};
+
+const actualizarlocalstorage = (carrito)=>{
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+};
+
+const removeProduct =(indice)=>{
+    carrito.splice(indice, 1);
+    actualizarlocalstorage(carrito);
+    crearcarrito()
+};
+
+const finalizarcompra = ()=> {
+    const finaltotal = document.getElementsByClassName("totaltotal")[0].innerHTML;
+    modalCarrito.innerHTML ="";
+    const comprafinalizada = `
+    <div class="product-details">Total: $ ${total}</div>
+    <p class="datos-parrafo"> Ya casi estamos! Decinos donde te entregamos tu nueva notebook.</p>
+    <button class="btn btn-info formulario" id="formulario" onClick="crearformulario()"> AGREGAR DIRECCION</button>
+    `;
+    modalCarrito.innerHTML = comprafinalizada;
 }
-
-function comprarProducto() {
-    producto = prompt("Escribi el numero de la Notebook que queres \n 1 - MSI Katana G66 \n 2 - ASUS TUF PiJ 344 \n 3 - HP Omen 7800");
-    if (producto === "1") (alert("Elegiste MSI Katana G66"))
-    else if(producto === "2") (alert("Elegiste ASUS TUF PiJ 344"))
-    else if(producto === "3") (alert("Elegiste HP Omen 7800"))
-    menu = prompt("Como deseas contuninuar? \n 2 - Precio total de la compra \n 3 - Terminar")
-}
-
-function finalizarCompra() {
-    if (producto === "1") (alert ("Precio final + IVA = " + (msiKatana * 1.21) + " pesos."))
-    if (producto === "2") (alert ("Precio final + IVA = " + (asusTuf * 1.21) + " pesos."))
-    if (producto === "3") (alert ("Precio final + IVA = " + (hpOmen * 1.21) + " pesos."))
-}
-
-//ciclos
-while (menu !== "3") {
-    if (menu === "1") {comprarProducto ()}
-    if (menu === "2") {finalizarCompra (); menu = "3";}
-}
-
-//despedida
-alert ("Gracias por tu compra! Vuelva prontos!")
-
-
