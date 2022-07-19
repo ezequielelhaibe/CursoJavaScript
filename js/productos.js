@@ -13,3 +13,4 @@ let productos = [
     {id: 11, nombre: "compu 11", imagen: "#", precio: 7864556, descripcion: "Descripcion de la notebook"},
     {id: 12, nombre: "compu 12", imagen: "#", precio: 78978, descripcion: "Descripcion de la notebook"}
 ];
+
