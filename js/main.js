@@ -1,5 +1,8 @@
-const tarjetas = document.getElementById("tarjetaProducto");
-productos.forEach((productosDisponibles,indice)=>{
+fetch(`js/productos.json`)
+.then((response) => response.json())
+.then((productos) => {
+    const tarjetas = document.getElementById("tarjetaProducto");
+    productos.forEach((productosDisponibles,indice)=>{
     let card = document.createElement("div");
     card.classList.add("card", "col-sm-12", "col-lg-4")
     card.innerHTML=`
@@ -12,6 +15,7 @@ productos.forEach((productosDisponibles,indice)=>{
         </div>
         `;
     tarjetas.appendChild(card);
+});
 });
 
 let cuadrocarrito = document.getElementById("cart");
