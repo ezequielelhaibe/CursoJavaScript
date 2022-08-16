@@ -1,25 +1,35 @@
 body {
-    background-color: rgb(239, 235, 235);
-    color: darkred;
+    background-color: black;
+    color: white;
+    font-weight: bold;
 }
 .titulo{
     text-align: center;
     margin-bottom: 40px;
 }
-#tarjetaProducto{
-    margin-bottom: 30px;
-}
-#cajacarrito{
-    width: 80%;
-    height: 400px;
-    margin: 10px;
-    background-color: aqua;
-}
 footer{
     height: 100px;
     margin-top: 25px;
-    background-color: darkred;
-    color: black;
-    text-align: right;
+    background-color: rgb(0,72,186);
+    color: white;
+    font-weight: bold;
 }
+header{
+    background-color: rgb(0,72,186);
+    color: white;
+}
+.card-img-top{
+    padding: 5px;
+    height: 350px;
+    width: 350px;
+    border-radius: 10px;
 
+}
+.card{
+    background-color: rgb(0,72,186);
+    border: 15px;
+    border-color: black;
+}
+#cajaproductos{
+    padding: 15px;
+}

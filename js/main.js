@@ -6,8 +6,8 @@ fetch(`js/productos.json`)
     let card = document.createElement("div");
     card.classList.add("card", "col-sm-12", "col-lg-4")
     card.innerHTML=`
-        <img src="${productosDisponibles.imagen}" class="card-img-top" alt="imagenproducto">
         <div class="card-body">
+        <img src="${productosDisponibles.imagen}" class="card-img-top" alt="imagenproducto">
         <h5 class="card-title">${productosDisponibles.nombre}</h5>
         <p class="card-text">${productosDisponibles.descripcion}</p>
         <p class="card-text">$ ${productosDisponibles.precio}</p>
