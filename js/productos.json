@@ -1,4 +1,5 @@
-[   {"id": 1, "nombre": "ACER ASPIRE 5", "imagen": "assets/img/aceraspire5.jpg", "precio": 180000, "descripcion": "Ryzen 7 5700U 8 nucleos - disco hdd 1tb - disco ssd 256gb - 20gb ram ddr4 - 15.6 pulgadas"},
+[   
+    {"id": 1, "nombre": "ACER ASPIRE 5", "imagen": "assets/img/aceraspire5.jpg", "precio": 180000, "descripcion": "Ryzen 7 5700U 8 nucleos - disco hdd 1tb - disco ssd 256gb - 20gb ram ddr4 - 15.6 pulgadas"},
     {"id": 2, "nombre": "ASUS TUF", "imagen": "assets/img/asustuffx516pm211.jpg", "precio": 290000, "descripcion": "Intel I7 11370H - Placa RTX 3060 6gb - disco ssd 512gb - 16gb ram ddr4 - 16 pulgadas"},
     {"id": 3, "nombre": "ASUS ZENBOOK", "imagen": "assets/img/asuszenbookq408ug.jpg", "precio": 175000, "descripcion": "Ryzen 5 5500U 6 Nucleos - Placa MX 450 - disco ssd 256gb - 8gb ram ddr4 - 14 pulgadas"},
     {"id": 4, "nombre": "DELL INSPIRON", "imagen": "assets/img/dellinspiron3511.jpg", "precio": 135000, "descripcion": "Intel I5 1135G7 - disco hdd 1tb - disco ssd 256gb - 16gb ram ddr4 - 15.6 pulgadas"},
